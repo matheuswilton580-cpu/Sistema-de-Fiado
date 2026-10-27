@@ -1,26 +1,23 @@
 # Sistema de Fiado
 
-Sistema web para controle de clientes, compras fiadas, débitos e pagamentos.
-http://fiadointeligente.site.je/
+**Sistema web para gerenciamento de clientes, vendas fiadas, débitos e pagamentos.**
 
-## Integrantes
+🌐 **Acesse o sistema:** [fiadointeligente.site.je](http://fiadointeligente.site.je/)
+
+## Equipe de desenvolvimento
+
 - Matheus Wilton
 - Luiz Guilherme
 - Henrique Nascimento
 
-## Instituição
-- **Curso:** Gestão da Tecnologia da Informação (GTI)
-- **Faculdade:** FPM — Faculdade de Princípios Militares
-- **Local:** Goiânia — GO, Brasil
+**Instituição:** FPM — Faculdade de Princípios Militares  
+**Curso:** Gestão da Tecnologia da Informação (GTI)  
+**Local:** Goiânia, Goiás, Brasil
 
-## Objetivo
-Desenvolver uma solução prática para facilitar o gerenciamento de vendas no fiado, acompanhar valores pendentes e organizar os pagamentos dos clientes.
+## Sobre o projeto
 
-## Tecnologias
-- PHP
-- MySQL
-- HTML
-- CSS
-- JavaScript
+Projeto acadêmico desenvolvido para facilitar o controle de vendas a prazo, o acompanhamento de débitos e a organização dos pagamentos de clientes.
 
-**Projeto acadêmico — GTI | FPM**
+## Repositório
+
+O código-fonte e o histórico de desenvolvimento estão disponíveis neste repositório.
