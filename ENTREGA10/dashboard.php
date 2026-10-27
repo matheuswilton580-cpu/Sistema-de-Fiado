@@ -1,0 +1,41 @@
+<?php
+require_once "verifica_login.php";
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Menu — Sistema Fiado</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Menu Principal</h1>
+    <p class="boas-vindas">
+        Bem-vindo, <?php echo htmlspecialchars($_SESSION['usuario_nome']); ?>!
+        (Perfil: <strong><?php echo eh_admin() ? "Administrador" : "Usuário comum"; ?></strong>)
+    </p>
+
+    <?php mostrar_flash(); ?>
+
+    <a href="listar_clientes.php"><button>Listar Clientes</button></a>
+    <a href="cadastro_cliente.php"><button>Cadastrar Cliente</button></a>
+    <a href="registrar_compra.php"><button>Registrar Compra (Fiado)</button></a>
+    <a href="registrar_pagamento.php"><button>Registrar Pagamento</button></a>
+    <a href="relatorio.php"><button>Relatório de Dívidas (com filtros)</button></a>
+    <a href="ranking.php"><button>Ranking de Clientes</button></a>
+
+    <?php if (eh_admin()): ?>
+        <!-- Opções exclusivas do administrador -->
+        <a href="resumo.php"><button>Resumo Financeiro (Dashboard)</button></a>
+        <a href="usuarios.php"><button>Gerenciar Usuários</button></a>
+    <?php endif; ?>
+
+    <a href="logout.php" onclick="return confirm('Deseja sair do sistema?')">
+        <button class="btn-sair">Sair</button>
+    </a>
+</div>
+
+</body>
+</html>
