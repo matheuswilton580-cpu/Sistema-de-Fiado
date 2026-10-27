@@ -1,2 +1,25 @@
 # Sistema de Fiado
-# Sistema de Fiado  **Desenvolvido por:** Matheus Wilton, Luiz Guilherme e Henrique Nascimento.  **Curso:** Gestão da Tecnologia da Informação (GTI)  **Instituição:** FPM — Faculdade de Princípios Militares  **Localização:** Goiânia, Goiás, Brasil.  ## Sobre o projeto  O Sistema de Fiado é um projeto acadêmico desenvolvido por alunos do curso de Gestão da Tecnologia da Informação (GTI), da FPM — Faculdade de Princípios Militares, localizada em Goiânia, Goiás, Brasil.  O objetivo do sistema é facilitar o controle de compras realizadas a prazo, permitindo o registro de clientes, o acompanhamento de débitos, o controle de pagamentos e a consulta de valores pendentes.  A proposta busca oferecer uma solução prática e organizada para pequenos comércios que trabalham com vendas no fiado, contribuindo para a redução de erros nos registros manuais e para uma gestão financeira mais eficiente.  **Integrantes:** Matheus Wilton, Luiz Guilherme e Henrique Nascimento.  **Projeto acadêmico — GTI | FPM | Goiânia, Goiás, Brasil.**
+
+Sistema web para controle de clientes, compras fiadas, débitos e pagamentos.
+
+## Integrantes
+- Matheus Wilton
+- Luiz Guilherme
+- Henrique Nascimento
+
+## Instituição
+- **Curso:** Gestão da Tecnologia da Informação (GTI)
+- **Faculdade:** FPM — Faculdade de Princípios Militares
+- **Local:** Goiânia — GO, Brasil
+
+## Objetivo
+Desenvolver uma solução prática para facilitar o gerenciamento de vendas no fiado, acompanhar valores pendentes e organizar os pagamentos dos clientes.
+
+## Tecnologias
+- PHP
+- MySQL
+- HTML
+- CSS
+- JavaScript
+
+**Projeto acadêmico — GTI | FPM**
