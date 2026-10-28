@@ -1,20 +1,34 @@
-SET NAMES utf8;
-DROP DATABASE IF EXISTS sistema_fiado;
-CREATE DATABASE sistema_fiado CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE sistema_fiado;
+-- =====================================================================
+-- Sistema de Fiado - banco unificado
+-- Junta: banco.sql + atualizar_banco.sql + atualizar_banco_2.sql
+--
+-- COMO USAR NA INFINITYFREE:
+--   1. Crie o banco no painel (ex.: if0_43295038_fiado)
+--   2. Abra o phpMyAdmin, SELECIONE esse banco e vá em "Importar"
+--   (Este arquivo NÃO cria banco nem usa "USE": você importa dentro
+--    do banco que já criou no painel.)
+-- =====================================================================
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ---------------------------------------------------------------------
+-- TABELAS
+-- ---------------------------------------------------------------------
 
 -- Tabela de clientes
-CREATE TABLE clientes (
+CREATE TABLE IF NOT EXISTS clientes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     telefone VARCHAR(20),
     endereco VARCHAR(200),
     limite_credito DECIMAL(10,2) DEFAULT 500.00,
     criado_em DATETIME DEFAULT CURRENT_TIMESTAMP
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Tabela de usuários (nível admin/comum/cliente, status da solicitação e vínculo com o cliente)
-CREATE TABLE usuarios (
+-- Tabela de usuários
+-- (nível admin/comum/cliente, status da solicitação e vínculo com o cliente)
+CREATE TABLE IF NOT EXISTS usuarios (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     usuario VARCHAR(50) NOT NULL UNIQUE,
@@ -25,30 +39,35 @@ CREATE TABLE usuarios (
     telefone_solicitado VARCHAR(20) NULL,
     criado_em DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE CASCADE
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Tabela de compras (fiado)
-CREATE TABLE compras (
+CREATE TABLE IF NOT EXISTS compras (
     id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_id INT NOT NULL,
     descricao VARCHAR(200),
     valor DECIMAL(10,2) NOT NULL,
     data_compra DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE CASCADE
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Tabela de pagamentos
-CREATE TABLE pagamentos (
+CREATE TABLE IF NOT EXISTS pagamentos (
     id INT AUTO_INCREMENT PRIMARY KEY,
     cliente_id INT NOT NULL,
     valor DECIMAL(10,2) NOT NULL,
     data_pagamento DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (cliente_id) REFERENCES clientes(id) ON DELETE CASCADE
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+SET FOREIGN_KEY_CHECKS = 1;
 
 -- ---------------------------------------------------------------------
 -- STORED PROCEDURES
 -- ---------------------------------------------------------------------
+DROP PROCEDURE IF EXISTS sp_relatorio_clientes;
+DROP PROCEDURE IF EXISTS sp_registrar_compra;
+
 DELIMITER $$
 
 -- SP 1 (consulta/relatório complexo):
@@ -161,11 +180,12 @@ END$$
 DELIMITER ;
 
 -- ---------------------------------------------------------------------
--- DADOS DE EXEMPLO
+-- DADOS DE EXEMPLO (use só na PRIMEIRA importação)
 -- ---------------------------------------------------------------------
 -- Usuários (senhas criptografadas com password_hash do PHP)
 --   admin   | senha: admin123 | nível: admin
 --   usuario | senha: user123  | nível: comum
+-- IMPORTANTE: troque essas senhas depois que o site estiver no ar.
 INSERT INTO usuarios (nome, usuario, senha, nivel) VALUES
 ('Administrador', 'admin',   '$2y$10$MJxxI0F.bM2VFWJck879Vu0Hjgf9SUqQP3EKnVxW0uqApbfxhlO/S', 'admin'),
 ('Atendente',     'usuario', '$2y$10$0HMHeAXinJ1McZeqFdMlTuNUpoM9n/jHCTstb0Kb/KVZJ.b9Q/dqy', 'comum');
