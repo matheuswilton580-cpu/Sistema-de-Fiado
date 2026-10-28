@@ -1,21 +1,4 @@
-Claude
-Banco infinityfree · SQL
--- =====================================================================
--- Sistema de Fiado - banco para InfinityFree (SEM stored procedures)
---
--- COMO USAR:
---   1. No phpMyAdmin, SELECIONE o banco (ex.: if0_43295038_fiado)
---   2. Vá em "Importar" e envie este arquivo
---
--- As tabelas usam CREATE TABLE IF NOT EXISTS, então pode importar mesmo
--- que elas já existam. ATENÇÃO: os INSERTs de exemplo no final NÃO
--- verificam duplicidade. Importe este arquivo só uma vez com as tabelas
--- vazias (se der erro no meio e precisar repetir, apague as tabelas antes).
---
--- As antigas procedures sp_relatorio_clientes e sp_registrar_compra
--- agora são funções PHP (veja funcoes_fiado.php).
--- =====================================================================
- 
+
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
  
@@ -64,13 +47,7 @@ CREATE TABLE IF NOT EXISTS pagamentos (
  
 SET FOREIGN_KEY_CHECKS = 1;
  
--- ---------------------------------------------------------------------
--- DADOS DE EXEMPLO (use só na PRIMEIRA importação)
--- ---------------------------------------------------------------------
--- Usuários (senhas criptografadas com password_hash do PHP)
---   admin   | senha: admin123 | nível: admin
---   usuario | senha: user123  | nível: comum
--- IMPORTANTE: troque essas senhas depois que o site estiver no ar.
+
 INSERT INTO usuarios (nome, usuario, senha, nivel) VALUES
 ('Administrador', 'admin',   '$2y$10$MJxxI0F.bM2VFWJck879Vu0Hjgf9SUqQP3EKnVxW0uqApbfxhlO/S', 'admin'),
 ('Atendente',     'usuario', '$2y$10$0HMHeAXinJ1McZeqFdMlTuNUpoM9n/jHCTstb0Kb/KVZJ.b9Q/dqy', 'comum');
@@ -94,5 +71,3 @@ INSERT INTO pagamentos (cliente_id, valor, data_pagamento) VALUES
 (4, 60.00, NOW() - INTERVAL 15 DAY);
  
 
-
-Claude terminou a resposta
