@@ -1,0 +1,12 @@
+FIA DO FÁCIL — INSTALAÇÃO NO INFINITYFREE
+
+1. Faça backup dos arquivos existentes.
+2. Envie o conteúdo desta pasta para htdocs, sem deixar os arquivos dentro de uma subpasta adicional.
+3. Importe sql/instalar_banco.sql no banco selecionado no phpMyAdmin.
+4. Copie config.local.example.php para config.local.php e preencha host, usuário, senha e banco com os dados do painel InfinityFree.
+5. Abra o domínio do site. O index.php encaminha para login.php.
+
+Leia README.md para instruções completas para InfinityFree, XAMPP/local e GitHub.
+
+ATENÇÃO: config.local.php contém credenciais e não deve ser publicado no GitHub.
+Se já existir um banco com dados, faça backup antes de importar o SQL. O script cria tabelas que não existem; não migra automaticamente estruturas antigas.

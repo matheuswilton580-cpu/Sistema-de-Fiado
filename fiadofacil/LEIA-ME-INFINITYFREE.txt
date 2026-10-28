@@ -1,0 +1,19 @@
+SISTEMA DE FIADO - PREPARADO PARA INFINITYFREE
+
+ESTRUTURA
+Este ZIP foi organizado para que os arquivos fiquem diretamente dentro da pasta htdocs.
+Ele inclui index.php, que encaminha a página inicial para login.php.
+
+ANTES DE USAR
+1. Abra conexao.php no editor do Gerenciador de Arquivos.
+2. Troque COLOQUE_A_SENHA_DO_MYSQL_AQUI pela senha MySQL da hospedagem.
+3. Confirme no painel do InfinityFree o host, usuário e nome do banco. Se forem diferentes dos valores preenchidos, atualize-os.
+4. Salve o arquivo.
+
+UPLOAD
+Faça backup dos arquivos atuais antes de substituir qualquer coisa.
+Envie o ZIP para htdocs e extraia o conteúdo de forma que index.php e login.php fiquem diretamente em htdocs, e não dentro de uma pasta adicional.
+Não apague arquivos existentes antes de comparar. Se o gerenciador não conseguir extrair por cima, extraia em uma pasta temporária e copie os arquivos depois do backup.
+
+BANCO DE DADOS
+O ZIP não contém um dump SQL novo e não altera o banco de dados. O banco já existente precisa ter as tabelas e colunas esperadas pelo código PHP.

@@ -1,0 +1,9 @@
+.vscode/
+.idea/
+*.log
+.env
+Thumbs.db
+desktop.ini
+
+# Credenciais locais/da hospedagem (nunca versionar)
+config.local.php
